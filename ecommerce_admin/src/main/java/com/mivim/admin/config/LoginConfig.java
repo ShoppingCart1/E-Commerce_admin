@@ -16,6 +16,7 @@ import com.mivim.admin.servicesimplementations.LoginService;
 
 @Configuration
 @ComponentScan(basePackages="com.mivim.admin.controller")
+
 @EnableWebMvc
 public class LoginConfig extends WebMvcConfigurerAdapter{
 

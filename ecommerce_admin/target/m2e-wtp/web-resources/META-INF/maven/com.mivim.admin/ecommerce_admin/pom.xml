@@ -8,7 +8,7 @@
 	<version>1.0</version>
 	<packaging>war</packaging>
 
-	<name>SpringMvcJdbcTemplate</name>
+	<name>ecommerce_admin</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -76,7 +76,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>SpringMvcJdbcTemplate</finalName>
+		<finalName>ecommerce_admin</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
