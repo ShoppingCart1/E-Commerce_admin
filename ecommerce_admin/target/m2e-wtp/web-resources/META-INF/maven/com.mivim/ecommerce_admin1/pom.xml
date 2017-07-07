@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mivim</groupId>
-	<artifactId>ecommerce_admin</artifactId>
+	<artifactId>ecommerce_admin1</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ecommerce_admin</name>
+	<name>ecommerce_admin1</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -148,6 +148,6 @@
 
 	</dependencies>
 	<build>
-		<finalName>ecommerce_admin</finalName>
+		<finalName>ecommerce_admin1</finalName>
 	</build>
 </project>

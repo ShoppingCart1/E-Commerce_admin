@@ -1,63 +1,76 @@
 package com.mivim.admin.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mivim.admin.daoimplementations.AdminLoginDao;
 import com.mivim.admin.dto.AdminLoginDto;
-import com.mivim.admin.servicesimplementations.AdminLoginService;
+import com.mivim.admin.dto.RegisterUserDto;
+import com.mivim.admin.service.IAdminLoginService;
 
 @Controller
 public class AdminLoginController {
-	
 
-	
-	@Autowired
-	private AdminLoginService adminLoginService;
-	private AdminLoginDao adminLoginDao;
+	@Autowired(required = true)
+	@Qualifier("adminLoginService")
+	IAdminLoginService adminLoginService;
 
-	
-	@RequestMapping(value = "/login", method=RequestMethod.GET)
-	public ModelAndView doLogin(){
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject(modelAndView);
-		modelAndView.setViewName("/login_modules/login");
-		return modelAndView;
-	
+	/*
+	 * @author SReddy This method is for userAuthentication
+	 * 
+	 * @return Map
+	 * 
+	 * @param UserDto object
+	 */
+	/*@RequestMapping(value="/login",method=RequestMethod.GET)
+	public ModelAndView getLogin()
+	{
+		return new ModelAndView("login");
 	}
+	*/
 	
-	
-	@RequestMapping(value = "/loginCheck", method=RequestMethod.POST)
-	public ModelAndView doLoginCheck(@ModelAttribute("adminLoginDto") AdminLoginDto adminLoginDto, HttpServletRequest request, HttpServletResponse response){
-		
-		ModelAndView modelAndView = new ModelAndView();
+	@RequestMapping(value = "/authentication", method = RequestMethod.POST,consumes = "application/json", produces = "application/json")
+	public @ResponseBody Map<String, Object> getAuthentication(AdminLoginDto dto, @RequestParam("email") String email) {
 
-		boolean loginCheck = adminLoginService.getLoginService(adminLoginDto, adminLoginDao);
-		
-		if(loginCheck){
-			modelAndView.setViewName("/login_modules/adminHome");
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		if (adminLoginService.authentication(dto)) {
+			map.put("status", "200");
+			map.put("message", "Your login is Successful");
+		} else {
+			map.put("status", "400");
+			map.put("message", "Your login failed");
 		}
-		else{
-			modelAndView.setViewName("/login_modules/adminFailure");
-		}	
-		
-		return modelAndView;
-		
+		System.out.println("Test user name "+email);
+		return map;
+
 	}
-	
-//	 @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-//	   public String redirect() {
-//	      return "redirect: login.html";
-//	   }
-//	
-//	
-//	
+
+	/*
+	 * This method for Register user
+	 * 
+	 */
+	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> getRegisterUser(RegisterUserDto dto) {
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		if (adminLoginService.register(dto)) {
+			map.put("status", "200");
+			map.put("message", "Your login is Successful");
+		} else {
+			map.put("status", "400");
+			map.put("message", "Your login failed");
+		}
+
+		return map;
+
+	}
+
 }

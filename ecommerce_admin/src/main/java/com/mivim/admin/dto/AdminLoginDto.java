@@ -1,21 +1,23 @@
 package com.mivim.admin.dto;
 
+
 public class AdminLoginDto {
-	private String userName, passWord;
+	
 
-	public String getUserName() {
-		return userName;
+	String email;
+	String password;
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassWord() {
-		return passWord;
-	}
-
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
-	}
 }

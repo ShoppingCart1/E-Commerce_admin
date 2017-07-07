@@ -1,26 +1,20 @@
-package com.mivim.admin.daoimplementations;
+package com.mivim.admin.daoImplementations;
 
-import com.mivim.admin.daointerfaces.IAdminLoginDao;
+import com.mivim.admin.dao.IAdminLoginDao;
 import com.mivim.admin.dto.AdminLoginDto;
 
-public class AdminLoginDao implements IAdminLoginDao{
-	
+public class AdminLoginDao implements IAdminLoginDao {
+
+	/*
+	 * @see com.mivim.dao.UserDao#authentication(com.mivim.dto.UserDto)
+	 * Here we wrote persistence logic
+	 * @return Integer
+	 * @param UserDto object
+	 */
 	@Override
-	public boolean getLoginDao(AdminLoginDto adminLoginDto) {
-		// TODO Auto-generated method stub
-		String userName = adminLoginDto.getUserName();
-		String passWord = adminLoginDto.getPassWord();
+	public int authentication(AdminLoginDto dto) {
 		
-		if(userName.equals("tmmr")){
-			return true;
-		}		
-		else{
-			return false;
-		}
+		return 0;
 	}
-
-	
-
-
 
 }
