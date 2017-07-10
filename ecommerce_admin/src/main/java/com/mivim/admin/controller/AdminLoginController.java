@@ -21,7 +21,7 @@ public class AdminLoginController {
 	@Autowired(required = true)
 	@Qualifier("adminLoginService")
 	IAdminLoginService adminLoginService;
-
+	
 	/*
 	 * @author SReddy This method is for userAuthentication
 	 * 
@@ -53,24 +53,6 @@ public class AdminLoginController {
 
 	}
 
-	/*
-	 * This method for Register user
-	 * 
-	 */
-	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> getRegisterUser(RegisterUserDto dto) {
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		if (adminLoginService.register(dto)) {
-			map.put("status", "200");
-			map.put("message", "Your login is Successful");
-		} else {
-			map.put("status", "400");
-			map.put("message", "Your login failed");
-		}
-
-		return map;
-
-	}
+	
 
 }
