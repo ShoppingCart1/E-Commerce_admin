@@ -1,4 +1,4 @@
-var app = angular.module('mivimMain', [ 'ngRoute','addItemApp', 'mivimNonSecured','mivimHome' ]);
+var app = angular.module('mivimMain', [ 'ngRoute','addItemApp','updateItemApp' ,'mivimNonSecured','mivimHome' ]);
 
 // configure our routes
 app.config(function($routeProvider) {
@@ -21,5 +21,9 @@ app.config(function($routeProvider) {
 	.when('/addItem', {
 		templateUrl : 'adminModule/addItem/addItem.html',
 		controller : 'addItemCtrl'
+	})
+	.when('/updateItem', {
+		templateUrl : 'adminModule/updateItem/updateItem.html',
+		controller : 'updateItemCtrl'
 	})
 });

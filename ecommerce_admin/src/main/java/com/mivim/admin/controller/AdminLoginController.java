@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mivim.admin.dto.AdminLoginDto;
-import com.mivim.admin.dto.RegisterUserDto;
 import com.mivim.admin.service.IAdminLoginService;
 
 @Controller

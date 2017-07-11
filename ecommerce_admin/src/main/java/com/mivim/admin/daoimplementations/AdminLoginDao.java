@@ -1,4 +1,4 @@
-package com.mivim.admin.daoimplementations;
+package com.mivim.admin.daoImplementations;
 
 
 

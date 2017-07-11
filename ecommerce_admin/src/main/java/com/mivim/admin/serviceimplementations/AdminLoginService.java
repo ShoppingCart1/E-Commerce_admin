@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.mivim.admin.dto.RegisterUserDto;
 import com.mivim.admin.dto.AdminLoginDto;
 import com.mivim.admin.service.IAdminLoginService;
 
@@ -26,10 +25,6 @@ public class AdminLoginService implements IAdminLoginService {
 		return true;
 	}
 
-	@Override
-	public boolean register(RegisterUserDto dto) {
-		// TODO Auto-generated method stub
-		return true;
-	}
+
 
 }
