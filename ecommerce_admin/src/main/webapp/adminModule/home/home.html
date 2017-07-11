@@ -1,3 +1,63 @@
+<html>
+<head>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+@import url('https://fonts.googleapis.com/css?family=Averia+Libre|Love+Ya+Like+A+Sister');
+@import url('https://fonts.googleapis.com/css?family=Averia+Libre|Love+Ya+Like+A+Sister|Milonga');
+@import url('https://fonts.googleapis.com/css?family=Philosopher');
+.itemView
+{
+	
+-webkit-transition: all 2s ease;
+ -moz-transition: all 2s ease;
+ -ms-transition: all 2s ease;
+ transition: all 2s ease;
+	float:left;
+	padding :15px;
+	color: #89ace5;
+	margin :10px 10px 10px 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.itemView img:hover
+{
+	transform: scale(1.1); 
+}
+.itemView :hover{
+	font-weight:bold;
+	color: #4786ed;
+	
+}
+#title{
+		font-family: 'Love Ya Like A Sister', cursive;
+		font-size	:30px;
+}
+#itemName{
+			font-family: 'Love Ya Like A Sister', cursive;
+		font-family: 'Averia Libre', cursive;
+		font-size:40px;
+		font-weight:bold;
+		
+}
+#itemDescription{font-family: 'Philosopher', sans-serif;
+					font-size: 25px;
+				}
+				
+	#price{font-family: 'Philosopher', sans-serif;
+					font-size: 25px;
+					color:28px;
+	}
+#items{
+		padding:0px 100px 0px 100px;
+}
+#itemView{
+		padding:0px 100px 0px 100px;
+}
+</style>
+
+</head>
+
+<body>
+
 <div class="container">
   <br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -63,14 +123,22 @@
   </div>
 </div><br><br>
 <!-- carousel ends here -->
-<div data-ng-init="getData()">
+<div data-ng-init="getData()" id="items" ng-if="item == null">
 <div class="itemView" ng-repeat="item in items">
-  <img src="Image/{{item.id}}.jpg" alt="" style="width:304px;height:250px;">
+          <!-- <form role="form" name="regform" ng-submit="getItemDataById()">
+		<input type="hidden" ng-model="id" name="id" ng-value="{{item.id}}"/> -->
+  <img src="Image/{{item.id}}.jpg" alt="{{item.id}}.jpg" style="width:304px;height:250px;">
   <p style="width:304px;height:80px;padding-top:20px;"><a>{{item.itemName}}</a></p>
   <table style="width:100%">
    <tr><td><p><a href="" class="price" >&#x20B9;{{item.unitPrice}}</a></p></td>
-   <td align="right"><p><a href="#!itemView">View Item</a></p></td>
+   <td align="right"><p><button ng-click="getItemDataById(item.id)"><a href="#!itemview">View Item</a></button></p></td>
    </tr>
    </table>
+   </form>
    </div>
 </div>
+<div class="plusicon">
+<img src="Image/plus.png" />
+</div>
+</body>
+</html>
