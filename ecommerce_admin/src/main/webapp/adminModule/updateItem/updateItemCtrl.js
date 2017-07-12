@@ -1,7 +1,9 @@
 var app= angular.module('updateItemApp',[]);
  
-   app.controller("updateItemCtrl",["$scope","$http", function($scope, $http) {
+   app.controller("updateItemCtrl",["$scope","$routeParams","$http",'$location', function($scope,$routeParams, $http, $location) {
 	   
+	   
+	   $scope.item=$routeParams.item;
 	   var categories= null;
 	   var subCategories=null;
 	   
@@ -52,9 +54,9 @@ var app= angular.module('updateItemApp',[]);
 		        });
 		 
 		    };
-		    $scope.doSubmit= function() {
+		    $scope.doUpdate= function() {
 				  
-				  var dto = { itemName: $scope.itemName, itemPrice:$scope.itemPrice, itemInventry:$scope.itemInventry, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
+				  var dto = { itemName: $scope.itemName, unitPrice:$scope.unitPrice, itemInventry:$scope.itemInventry, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
 				  
 				  var req = {
 		    			   method: 'GET',

@@ -24,6 +24,7 @@ public class AdminItemController {
 	
 	@RequestMapping(value="/addItem", method=RequestMethod.GET)
 	public int addItem(@RequestParam Map<String, String> addItemParamList){
+		String result = null;
 		int addItemCheck = iAdminItemService.addItem(addItemParamList); 
 		if(addItemCheck==1)
 		System.out.println("successful");

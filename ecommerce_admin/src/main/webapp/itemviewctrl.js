@@ -1,6 +1,6 @@
 var app= angular.module('mivimItemView',[]);
  
-   app.controller("itemviewctrl",["$scope", '$routeParams', function($scope, $routeParams) {
+   app.controller("itemviewctrl",["$scope", '$routeParams','$http','$location', function($scope, $routeParams,$http,$location) {
 	   
 	   
 	   $scope.item=$routeParams.item;

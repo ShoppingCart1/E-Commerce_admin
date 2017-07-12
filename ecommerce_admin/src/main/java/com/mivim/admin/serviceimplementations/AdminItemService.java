@@ -80,17 +80,17 @@ public class AdminItemService implements IAdminItemService{
 		String subCategory = addItemParamList.get("subCategory");
 		
 		System.out.println(itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+category+" "+subCategory);
-		return 0;
+		return 1;
 	}
 
 	@Override
 	public int updateItem(Map<String, String> updateItemParamList) {
-		String itemId = updateItemParamList.get("itemId");
+		//String itemId = updateItemParamList.get("itemId");
 		String itemName = updateItemParamList.get("itemName");
-		String unitPrice = updateItemParamList.get("unitPrice");
-		String inventry = updateItemParamList.get("inventry");
+		String unitPrice = updateItemParamList.get("itemPrice");
+		String inventry = updateItemParamList.get("itemInventry");
 		String itemDescription = updateItemParamList.get("itemDescription");
-		System.out.println(itemId+" "+itemName+" "+unitPrice+" "+inventry+" "+itemDescription);
+		System.out.println(itemName+" "+unitPrice+" "+inventry+" "+itemDescription + " "+ updateItemParamList);
 		return 1;		
 	}
 

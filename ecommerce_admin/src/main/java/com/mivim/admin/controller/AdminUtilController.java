@@ -36,8 +36,7 @@ public class AdminUtilController {
 		
 		List<AdminItemsDto> item=adminUtilService.getItemView(dto);
 
-		
-		return item;
+			return item;
 		
 	}
 }
