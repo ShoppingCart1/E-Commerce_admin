@@ -74,7 +74,7 @@ public class AdminItemService implements IAdminItemService{
 	@Override
 	public int addItem(AdminItemsDto dto) {
 		String itemName = dto.getItemName();
-		String itemPrice= dto.getItemPrice();
+		String itemPrice= dto.getUnitPrice();
 		String itemInventry = dto.getItemInventry();
 		String itemDescription = dto.getItemDescription();
 		String category = dto.getCategory();
@@ -87,10 +87,12 @@ public class AdminItemService implements IAdminItemService{
 	@Override
 	public int updateItem(AdminItemsDto dto) {
 		String itemName = dto.getItemName();
-		String itemPrice = dto.getItemPrice();
+		String itemPrice = dto.getUnitPrice();
 		String itemInventry = dto.getItemInventry();
 		String itemDescription = dto.getItemDescription();
-		System.out.println(" "+itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+dto);
+		String itemCategory = dto.getCategory();
+		String itemSubCategory = dto.getSubCategory();
+		System.out.println(" "+itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+itemCategory+" "+itemSubCategory+" "+dto);
 		return 1;
 	}
 

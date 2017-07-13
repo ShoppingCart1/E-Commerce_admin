@@ -4,11 +4,10 @@ public class AdminItemsDto {
 	
 	private String id;
 	private String itemName;
-	private String itemPrice;
+	private String unitPrice;
 	private String itemInventry;
 	private String itemDescription;
 	private String category;
-	
 	private String subCategory;
 	
 	public String getId() {
@@ -23,12 +22,15 @@ public class AdminItemsDto {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-	public String getItemPrice() {
-		return itemPrice;
+	
+	public String getUnitPrice() {
+		return unitPrice;
 	}
-	public void setItemPrice(String itemPrice) {
-		this.itemPrice = itemPrice;
+	
+	public void setUnitPrice(String unitPrice) {
+		this.unitPrice = unitPrice;
 	}
+	
 	public String getItemInventry() {
 		return itemInventry;
 	}

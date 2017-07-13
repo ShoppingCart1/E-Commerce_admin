@@ -78,5 +78,37 @@ var app= angular.module('mivimItemView',[]);
 			});
 
 		};
+		$scope.getRemoveItem = function(itemId) {
+
+			var dto = {
+				id : itemId
+			};
+			var req = {
+				method : 'POST',
+				url : 'ecommerce_admin/removeItem',
+				data : {
+
+				},
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				params : dto
+
+			}
+			$http(req).then(function(response) {
+//				$scope.item = response.data;
+
+				$location.path("/");
+				if (!$scope.$$phase) {
+					$scope.$apply();
+				}
+
+			}, function(response) {
+
+				console.log(response);
+
+			});
+
+		};
   	  
    }]);

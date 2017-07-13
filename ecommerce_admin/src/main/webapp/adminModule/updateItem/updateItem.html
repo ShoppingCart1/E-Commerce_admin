@@ -41,7 +41,7 @@
   <label class="col-md-4 control-label" >Item Price</label> 
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
-  <input type="text" name="itemPrice" ng-model="itemPrice" ng-init="itemPrice=item.itemPrice"  class="form-control"   style="width: 300px;">
+  <input type="text" name="unitPrice" ng-model="unitPrice" ng-init="unitPrice=item.unitPrice"  class="form-control"   style="width: 300px;">
     </div>
   </div>
 </div>
@@ -71,20 +71,26 @@
     <div class="col-md-4 selectContainer">
     <div class="input-group">
 							<select class="form-control selectpicker" name="category"
+								ng-model="category"
+								ng-init="category=item.category"
+								
 								ng-options="key as value for (key , value) in categories"
-								ng-model="category" ng-change="getSubCategory()" style="width:200px"></select> 
+								 ng-change="getSubCategory()" style="width:200px">
+								</select> 
    
   </div>
 </div>
 </div>
 
-  <div class="form-group"> 
+  <div class="form-group" data-ng-init="getSubCategory()"> 
   <label class="col-md-4 control-label">Item SubCategory</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
-    <select class="form-control selectpicker" name="subCategory"
+    <select class="form-control selectpicker" 
+    							ng-model="subCategory"
+    							ng-init="subCategory=item.subCategory"
 								ng-options="key as value for (key , value) in subCategories"
-								ng-model="subCategory" style="width:200px"></select> 
+								 style="width:200px"></select> 
     </select>
   </div>
 </div>
