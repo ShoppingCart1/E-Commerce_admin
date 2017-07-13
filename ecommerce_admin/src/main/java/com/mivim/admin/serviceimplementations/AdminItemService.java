@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mivim.admin.dto.AdminItemsDto;
 import com.mivim.admin.dto.CategoryDto;
 import com.mivim.admin.service.IAdminItemService;
 
@@ -71,31 +72,31 @@ public class AdminItemService implements IAdminItemService{
 	}
 
 	@Override
-	public int addItem(Map<String, String> addItemParamList) {
-		String itemName = addItemParamList.get("itemName");
-		String itemPrice= addItemParamList.get("itemPrice");
-		String itemInventry = addItemParamList.get("itemInventry");
-		String itemDescription = addItemParamList.get("itemDescription");
-		String category = addItemParamList.get("category");
-		String subCategory = addItemParamList.get("subCategory");
+	public int addItem(AdminItemsDto dto) {
+		String itemName = dto.getItemName();
+		String itemPrice= dto.getItemPrice();
+		String itemInventry = dto.getItemInventry();
+		String itemDescription = dto.getItemDescription();
+		String category = dto.getCategory();
+		String subCategory = dto.getSubCategory();
 		
 		System.out.println(itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+category+" "+subCategory);
 		return 1;
 	}
 
 	@Override
-	public int updateItem(Map<String, String> updateItemParamList) {
-		//String itemId = updateItemParamList.get("itemId");
-		String itemName = updateItemParamList.get("itemName");
-		String unitPrice = updateItemParamList.get("itemPrice");
-		String inventry = updateItemParamList.get("itemInventry");
-		String itemDescription = updateItemParamList.get("itemDescription");
-		System.out.println(itemName+" "+unitPrice+" "+inventry+" "+itemDescription + " "+ updateItemParamList);
-		return 1;		
+	public int updateItem(AdminItemsDto dto) {
+		String itemName = dto.getItemName();
+		String itemPrice = dto.getItemPrice();
+		String itemInventry = dto.getItemInventry();
+		String itemDescription = dto.getItemDescription();
+		System.out.println(" "+itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+dto);
+		return 1;
 	}
 
 	@Override
-	public int removeItem(String itemId) {
+	public int removeItem(AdminItemsDto dto) {
+		String itemId = dto.getId();
 		System.out.println("The item id is "+itemId);
 		return 1;
 	}

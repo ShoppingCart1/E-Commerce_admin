@@ -4,9 +4,12 @@ public class AdminItemsDto {
 	
 	private String id;
 	private String itemName;
-	private String unitPrice;
-	private String inventary;
+	private String itemPrice;
+	private String itemInventry;
 	private String itemDescription;
+	private String category;
+	
+	private String subCategory;
 	
 	public String getId() {
 		return id;
@@ -20,23 +23,35 @@ public class AdminItemsDto {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-	public String getUnitPrice() {
-		return unitPrice;
+	public String getItemPrice() {
+		return itemPrice;
 	}
-	public void setUnitPrice(String unitPrice) {
-		this.unitPrice = unitPrice;
+	public void setItemPrice(String itemPrice) {
+		this.itemPrice = itemPrice;
 	}
-	public String getInventary() {
-		return inventary;
+	public String getItemInventry() {
+		return itemInventry;
 	}
-	public void setInventary(String inventary) {
-		this.inventary = inventary;
+	public void setItemInventry(String itemInventry) {
+		this.itemInventry = itemInventry;
 	}
 	public String getItemDescription() {
 		return itemDescription;
 	}
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getSubCategory() {
+		return subCategory;
+	}
+	public void setSubCategory(String subCategory) {
+		this.subCategory = subCategory;
 	}
 	
 }
