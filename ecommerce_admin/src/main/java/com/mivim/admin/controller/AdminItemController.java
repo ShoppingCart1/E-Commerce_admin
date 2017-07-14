@@ -49,7 +49,7 @@ public class AdminItemController {
 	}
 	
 	@RequestMapping(value="/removeItem", method=RequestMethod.GET)
-	public int removeItem(AdminItemsDto dto){
+	public @ResponseBody int removeItem(AdminItemsDto dto){
 		int removeStatus = iAdminItemService.removeItem(dto); 
 		if(removeStatus==1)
 		System.out.println("successful");

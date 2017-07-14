@@ -6,6 +6,7 @@
 <title>ItemView</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="removeItemCtrl.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
 @import url('https://fonts.googleapis.com/css?family=Averia+Libre|Love+Ya+Like+A+Sister');
@@ -47,7 +48,7 @@ body{
  	  </tr>
  	  <tr>
  	  		<td><p><button ng-click="getItemDataById(item.id)"><a href="#!updateItem">Update Product</a></button></p></td>
- 	  		<td><p style="float:right;"><button ng-click="getremoveItem(item.id)"><a href="#!removeItem" >Remove Product</a></p></td>
+ 	  		 <td> <p><a class="btn btn-danger"  confirmed-click="removeItem(item.id)"  ng-confirm-click="Are u sure to delete?">Remove Item</a></p> </td>
  	  </tr>
  	 
  	 </table>

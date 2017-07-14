@@ -67,4 +67,8 @@ app.config(function($routeProvider) {
 		templateUrl : 'itemview.html',
 		controller : 'itemviewctrl'
 	})
+	.when('/itemview', {
+		templateUrl : 'itemview.html',
+		controller : 'itemviewctrl'
+	})
 });
