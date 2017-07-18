@@ -1,89 +1,92 @@
-var app= angular.module('mivimItemView',[]);
- 
-   app.controller("itemviewctrl",["$scope", '$routeParams','$http','$location', function($scope, $routeParams, $http, $location) {
-	   
-	   
-	   $scope.item=$routeParams.item;
-	
-	   $scope.getItemDataById = function(itemId) {
+var app = angular.module('mivimItemView', []);
 
-			var dto = {
-				id : itemId
-			};
-			var req = {
-				method : 'POST',
-				url : 'ecommerce_admin/getItemDataById',
-				data : {
+app.controller("itemviewctrl", [ "$scope", '$routeParams', '$http',
+		'$location', function($scope, $routeParams, $http, $location) {
 
-				},
-				headers : {
-					'Content-Type' : 'application/json'
-				},
-				params : dto
-
+			if (!$routeParams.item || $routeParams.item === "[object Object]" ) {
+				$location.path("/home");
+				return;
 			}
-			$http(req).then(function(response) {
-//				$scope.item = response.data;
+			$scope.item = $routeParams.item;
 
-				$location.path("/updateItem").search({item:  response.data[0]});
-				if (!$scope.$$phase) {
-					$scope.$apply();
+			$scope.getItemDataById = function(itemId) {
+
+				var dto = {
+					id : itemId
+				};
+				var req = {
+					method : 'POST',
+					url : 'ecommerce_admin/getItemDataById',
+					data : {
+
+					},
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					params : dto
+
 				}
+				$http(req).then(function(response) {
+					// $scope.item = response.data;
 
-			}, function(response) {
+					$location.path("/updateItem").search({
+						item : response.data[0]
+					});
+					if (!$scope.$$phase) {
+						$scope.$apply();
+					}
 
-				console.log(response);
+				}, function(response) {
 
-			});
+					console.log(response);
 
-		};
-		$scope.removeItem = function(itemId) {
-			var dto = {
-				id : itemId
+				});
+
 			};
-			var req1 = {
-				method : 'GET',
-				url : 'ecommerce_admin/removeItem',
-				data : {
+			$scope.removeItem = function(itemId) {
+				var dto = {
+					id : itemId
+				};
+				var req1 = {
+					method : 'GET',
+					url : 'ecommerce_admin/removeItem',
+					data : {
 
-				},
-				headers : {
-					'Content-Type' : 'application/json'
-				},
-				params : dto
+					},
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					params : dto
 
-			}
-			$http(req1).then(function(response) {
-//				$scope.item = response.data;
-				 alert('sucessfully deleted')
-			$location.path("/");
-				if (!$scope.$$phase) {
-					$scope.$apply();
 				}
+				$http(req1).then(function(response) {
+					// $scope.item = response.data;
+					alert('sucessfully deleted')
+					$location.path("/");
+					if (!$scope.$$phase) {
+						$scope.$apply();
+					}
 
-			}, function(response) {
+				}, function(response) {
 
-				console.log(response);
+					console.log(response);
 
+				});
+
+			};
+
+		} ]);
+
+app.directive('ngConfirmClick', [ function() {
+	return {
+		link : function(scope, element, attr) {
+			var msg = attr.ngConfirmClick || "Are you sure?";
+			var clickAction = attr.confirmedClick;
+			element.bind('click', function(event) {
+				if (window.confirm(msg)) {
+					scope.$eval(clickAction)
+				}
 			});
-
-		};
-  	  
-   }]);
-   
-   app.directive('ngConfirmClick', [
-                                    function(){
-                                        return {
-                                            link: function (scope, element, attr) {
-                                                var msg = attr.ngConfirmClick || "Are you sure?";
-                                                var clickAction = attr.confirmedClick;
-                                                element.bind('click',function (event) {
-                                                    if ( window.confirm(msg) ) {
-                                                        scope.$eval(clickAction)
-                                                    }
-                                                });
-                                            }
-                                        };
-                                }])
-
-   
+		}
+	};
+} ])

@@ -20,21 +20,6 @@ public class AdminLoginController {
 	@Autowired(required = true)
 	@Qualifier("adminLoginService")
 	IAdminLoginService adminLoginService;
-	
-	/*
-	 * @author SReddy This method is for userAuthentication
-	 * 
-	 * @return Map
-	 * 
-	 * @param UserDto object
-	 */
-	/*@RequestMapping(value="/login",method=RequestMethod.GET)
-	public ModelAndView getLogin()
-	{
-		return new ModelAndView("login");
-	}
-	*/
-	
 	@RequestMapping(value = "/authentication", method = RequestMethod.POST,consumes = "application/json", produces = "application/json")
 	public @ResponseBody Map<String, Object> getAuthentication(AdminLoginDto dto, @RequestParam("email") String email) {
 

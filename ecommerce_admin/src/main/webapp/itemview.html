@@ -15,6 +15,9 @@
 body{
 		padding:0px 100px 0px 100px;
 }
+.itemView{
+margin-left: 200px;
+}
 #itemName{
 			font-family: 'Love Ya Like A Sister', cursive;
 		font-family: 'Averia Libre', cursive;
@@ -38,7 +41,7 @@ body{
 	<tr>
 	<td rowspan="2"><div class="itemView">
 	
- 	  <img src="Image/{{item.id}}.jpg" alt="Image/{{item.id}}.jpg" style="width:320px;height:450px;">
+ 	  <img src="Image/{{item.id}}.jpg" alt="Image/{{item.id}}.jpg" style="width:320px;height:400px;">
  	  </div>
  	  </td>
  	  <td><p id="itemName">{{item.itemName}}</p>
@@ -47,7 +50,7 @@ body{
  	  </td>
  	  </tr>
  	  <tr>
- 	  		<td><p><button ng-click="getItemDataById(item.id)"><a href="#!updateItem">Update Product</a></button></p></td>
+ 	  		<td><p><a class="btn btn-primary" ng-click="getItemDataById(item.id)"  href="#!updateItem">Update Product</a></p></td>
  	  		 <td> <p><a class="btn btn-danger"  confirmed-click="removeItem(item.id)"  ng-confirm-click="Are u sure to delete?">Remove Item</a></p> </td>
  	  </tr>
  	 
