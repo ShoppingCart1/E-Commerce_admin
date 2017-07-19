@@ -1,6 +1,6 @@
 var app= angular.module('addItemApp',[]);
  
-   app.controller("addItemCtrl",["$scope","$http", function($scope, $http) {
+   app.controller("addItemCtrl",["$scope","$http","$window","$routeParams","$location", function($scope, $http, $window, $routeParams, $location) {
 	   
 	   var categories= null;
 	   var subCategories=null;
@@ -57,7 +57,7 @@ var app= angular.module('addItemApp',[]);
 				  var dto = { itemName: $scope.itemName, unitPrice:$scope.unitPrice, itemInventry:$scope.itemInventry, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
 				  
 				  var req = {
-		    			   method: 'GET',
+		    			   method: 'POST',
 		    			   url: 'ecommerce_admin/addItem',
 		    			   data:{
 		    				   
@@ -68,10 +68,13 @@ var app= angular.module('addItemApp',[]);
 		    			  }
 				  $http(req).then(function(response) {
 			            console.log(response.data);
+			            $window.alert("added successfully");
+			            $location.path("/");
 			            $scope.message = response.data;
 			        }, function(response) {
 			            //fail case
 			            console.log(response);
+			            $window.alert('failed');
 			            $scope.message = response;
 			        });
 			 

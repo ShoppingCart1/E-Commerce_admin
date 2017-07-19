@@ -73,10 +73,14 @@ var app= angular.module('updateItemApp',[]);
 		    			  }
 				  $http(req).then(function(response) {
 			            console.log(response.data);
+			            alert("Updated successfully");
+			            $location.path("/");
 			            $scope.message = response.data;
 			        }, function(response) {
 			            //fail case
 			            console.log(response);
+			            alert("Failed..!!!");
+			           
 			            $scope.message = response;
 			        });
 			 

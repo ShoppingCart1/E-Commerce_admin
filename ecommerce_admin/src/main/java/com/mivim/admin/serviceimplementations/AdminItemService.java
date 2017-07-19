@@ -23,7 +23,6 @@ import com.mivim.admin.service.IAdminItemService;
 
 @Service
 @Resource(name="adminItemService")
-
 public class AdminItemService implements IAdminItemService{
 
 	
@@ -79,7 +78,7 @@ public class AdminItemService implements IAdminItemService{
 	}
 
 	@Override
-	public int addItem(AdminItemsDto dto) throws IOException {
+	public int addItem(AdminItemsDto dto) {
 		String itemName = dto.getItemName();
 		String itemPrice= dto.getUnitPrice();
 		String itemInventry = dto.getItemInventry();
@@ -89,7 +88,7 @@ public class AdminItemService implements IAdminItemService{
 		
 		int testSession = AdminDao.test();
 		System.out.println(itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+category+" "+subCategory);
-		return testSession;
+		return 1;
 	}
 
 	@Override
