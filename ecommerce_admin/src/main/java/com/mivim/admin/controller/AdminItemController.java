@@ -1,5 +1,6 @@
 package com.mivim.admin.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -26,13 +27,13 @@ public class AdminItemController {
 	
 	@RequestMapping(value="/addItem", method=RequestMethod.GET)
 //	@RequestParam Map<String, String> addItemParamList
-	public @ResponseBody String addItem(AdminItemsDto dto){
+	public @ResponseBody String addItem(AdminItemsDto dto) throws IOException{
 		String result = null;
 		int addItemCheck = iAdminItemService.addItem(dto); 
 		if(addItemCheck==1)
-			result="success";
+			result="session success";
 		else
-			result = "failure";
+			result = "session failure";
 		System.out.println(result);
 			return result;
 	}

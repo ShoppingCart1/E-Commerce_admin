@@ -1,5 +1,7 @@
 package com.mivim.admin.serviceimplementations;
 
+import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,9 +9,14 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mivim.admin.daoImplementations.AdminDao;
 import com.mivim.admin.dto.AdminItemsDto;
 import com.mivim.admin.dto.CategoryDto;
 import com.mivim.admin.service.IAdminItemService;
@@ -21,7 +28,7 @@ public class AdminItemService implements IAdminItemService{
 
 	
 	@Override
-	public @ResponseBody Map<Integer, String> getCategories() {
+	public Map<Integer, String> getCategories() {
 		Map<Integer, String> categories = new HashMap<>();
 		categories.put(100, "Men");
 		categories.put(200, "Electronics");
@@ -32,7 +39,7 @@ public class AdminItemService implements IAdminItemService{
 	}
 	
 	@Override
-	public @ResponseBody Map<String, String> getSubCategoriesList(CategoryDto dto) {
+	public Map<String, String> getSubCategoriesList(CategoryDto dto) {
 		HashMap<String, Map> subCategories = new HashMap<>();
 		Map<Integer, String> subCategoryMen = new HashMap<>();
 		subCategoryMen.put(101, "Watches");
@@ -72,7 +79,7 @@ public class AdminItemService implements IAdminItemService{
 	}
 
 	@Override
-	public int addItem(AdminItemsDto dto) {
+	public int addItem(AdminItemsDto dto) throws IOException {
 		String itemName = dto.getItemName();
 		String itemPrice= dto.getUnitPrice();
 		String itemInventry = dto.getItemInventry();
@@ -80,8 +87,9 @@ public class AdminItemService implements IAdminItemService{
 		String category = dto.getCategory();
 		String subCategory = dto.getSubCategory();
 		
+		int testSession = AdminDao.test();
 		System.out.println(itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+category+" "+subCategory);
-		return 1;
+		return testSession;
 	}
 
 	@Override
