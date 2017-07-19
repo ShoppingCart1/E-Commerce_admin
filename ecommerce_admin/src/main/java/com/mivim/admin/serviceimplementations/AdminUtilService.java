@@ -38,9 +38,11 @@ import com.mivim.admin.service.IAdminUtilService;
 		
 		public static List<AdminItemsDto> getData()
 		{
+			//The code has to be written here to get Item from db
+			
 			AdminItemsDto item1=new AdminItemsDto();
-			item1.setId("1");
-			item1.setItemName("Item1 Name");
+			item1.setId("02ffb405-7bda-42b5-8929-2e0d33a33ee9");
+			item1.setItemName("Mobile");
 			item1.setUnitPrice("14500");
 			item1.setItemDescription("This is Item Description");
 			item1.setItemInventry("21");
@@ -48,7 +50,7 @@ import com.mivim.admin.service.IAdminUtilService;
 			item1.setSubCategory("102");
 
 			AdminItemsDto item2=new AdminItemsDto();
-			item2.setId("2");
+			item2.setId("0808be72-d615-494f-acac-ee2b97b248cd");
 			item2.setItemName("Item2 Name");
 			item2.setUnitPrice("14500");
 			item2.setItemDescription("This is Item Description");
@@ -57,7 +59,7 @@ import com.mivim.admin.service.IAdminUtilService;
 			item2.setSubCategory("202");
 
 			AdminItemsDto item3=new AdminItemsDto();
-			item3.setId("3");
+			item3.setId("58f327c7-d8d6-41cd-8c2f-7005189d04de");
 			item3.setItemName("Item3 Name");
 			item3.setUnitPrice("14500");
 			item3.setItemDescription("This is Item Description");
@@ -67,7 +69,7 @@ import com.mivim.admin.service.IAdminUtilService;
 
 
 			AdminItemsDto item4=new AdminItemsDto();
-			item4.setId("4");
+			item4.setId("5f81b73d-7c74-47b7-be47-3a7c0ae43a02");
 			item4.setItemName("Item4 Name");
 			item4.setUnitPrice("14500");
 			item4.setItemDescription("This is Item Description");
@@ -76,7 +78,7 @@ import com.mivim.admin.service.IAdminUtilService;
 			item4.setSubCategory("401");
 
 			AdminItemsDto item5=new AdminItemsDto();
-			item5.setId("5");
+			item5.setId("64e985c0-babd-41c8-8ac7-52ba72355e0a");
 			item5.setItemName("Item5 Name");
 			item5.setUnitPrice("14500");
 			item5.setItemDescription("This is Item Description");

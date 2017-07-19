@@ -1,5 +1,7 @@
 package com.mivim.admin.dto;
 
+import java.util.Date;
+
 public class AdminItemsDto {
 	
 	private String id;
@@ -9,7 +11,21 @@ public class AdminItemsDto {
 	private String itemDescription;
 	private String category;
 	private String subCategory;
+	private int status;
+	private Date updatedDate;
 	
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public String getId() {
 		return id;
 	}

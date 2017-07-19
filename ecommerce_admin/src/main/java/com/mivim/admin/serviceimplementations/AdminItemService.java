@@ -1,22 +1,17 @@
 package com.mivim.admin.serviceimplementations;
 
 import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mivim.admin.daoImplementations.AdminDao;
+import com.mivim.admin.dao.IAdminDao;
+import com.mivim.admin.dao.IAdminItemDao;
 import com.mivim.admin.dto.AdminItemsDto;
 import com.mivim.admin.dto.CategoryDto;
 import com.mivim.admin.service.IAdminItemService;
@@ -25,6 +20,10 @@ import com.mivim.admin.service.IAdminItemService;
 @Resource(name="adminItemService")
 public class AdminItemService implements IAdminItemService{
 
+	@Autowired(required = true)
+	@Qualifier("adminItemDao")
+	IAdminItemDao adminItemDao;	
+	
 	
 	@Override
 	public Map<Integer, String> getCategories() {
@@ -78,17 +77,17 @@ public class AdminItemService implements IAdminItemService{
 	}
 
 	@Override
-	public int addItem(AdminItemsDto dto) {
+	public int addItem(AdminItemsDto dto) throws IOException {
 		String itemName = dto.getItemName();
 		String itemPrice= dto.getUnitPrice();
 		String itemInventry = dto.getItemInventry();
 		String itemDescription = dto.getItemDescription();
 		String category = dto.getCategory();
 		String subCategory = dto.getSubCategory();
-		
-		int testSession = AdminDao.test();
+		System.out.println("adminDao = "+adminItemDao);
+		int addItemCheck = adminItemDao.addItem(dto);
 		System.out.println(itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+category+" "+subCategory);
-		return 1;
+		return addItemCheck;
 	}
 
 	@Override
@@ -99,7 +98,11 @@ public class AdminItemService implements IAdminItemService{
 		String itemDescription = dto.getItemDescription();
 		String itemCategory = dto.getCategory();
 		String itemSubCategory = dto.getSubCategory();
-		System.out.println(" "+itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+itemCategory+" "+itemSubCategory+" "+dto);
+		String itemId = dto.getId();
+		int updateItemCheck = adminItemDao.updateItem(dto);
+		
+		
+		System.out.println(itemId+" "+itemName+" "+itemPrice+" "+itemInventry+" "+itemDescription+" "+itemCategory+" "+itemSubCategory+" "+dto);
 		return 1;
 	}
 

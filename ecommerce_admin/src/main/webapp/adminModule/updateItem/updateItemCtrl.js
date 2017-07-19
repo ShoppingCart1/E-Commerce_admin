@@ -60,7 +60,7 @@ var app= angular.module('updateItemApp',[]);
 		    };
 		    $scope.doSubmit= function() {
 				  
-				  var dto = {itemName: $scope.itemName, unitPrice:$scope.unitPrice, itemInventry:$scope.itemInventry, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
+				  var dto = {id: $scope.id, itemName: $scope.itemName, unitPrice:$scope.unitPrice, itemInventry:$scope.itemInventry, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
 				  var req = {
 		    			   method: 'GET',
 		    			   url: 'ecommerce_admin/updateItem',
