@@ -41,6 +41,14 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.mivim.data.dao" />
 	</bean>
+
+	<bean id="item" class="com.mivim.data.model.Item"></bean>
+	<bean id="itemExample" class="com.mivim.data.model.ItemExample"></bean>
+
+	<bean id="category" class="com.mivim.data.model.Category"></bean>
+	<bean id="categoryExample" class="com.mivim.data.model.CategoryExample"></bean>
+
+
 	<context:component-scan base-package="com.mivim.*" />
 
 </beans>

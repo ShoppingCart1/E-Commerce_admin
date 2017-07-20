@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mivim.admin.dto.AdminItemsDto;
@@ -26,8 +27,9 @@ public class AdminItemController {
 
 	
 	@RequestMapping(value="/addItem", method=RequestMethod.POST,consumes="application/json",produces="application/json")
-	public @ResponseBody List<String> addItem(AdminItemsDto dto) throws IOException{
+	public @ResponseBody List<String> addItem(AdminItemsDto dto){
 //		String result = null;
+		System.out.println(dto.getCategory()+"  "+dto.getSubCategory());
 	int addItemCheck = iAdminItemService.addItem(dto);
 	List<String> list=new ArrayList<String>();
 		
@@ -41,6 +43,7 @@ public class AdminItemController {
 	
 	@RequestMapping(value="/updateItem", method=RequestMethod.GET)
 	public @ResponseBody List<String> updateItem(AdminItemsDto dto){
+
 		String result = null;
 		List<String> list=new ArrayList<String>();
 
@@ -55,17 +58,21 @@ public class AdminItemController {
 	@RequestMapping(value="/removeItem", method=RequestMethod.GET)
 	public @ResponseBody List removeItem(AdminItemsDto dto){
 		List<String> list=new ArrayList<String>();
+		
 		int removeStatus = iAdminItemService.removeItem(dto); 
+		
 		if(removeStatus==1)
 			list.add("Updated successfully");
+		
 		else
 			list.add("Updation failure");
+		
 		return list;
 	}
 
 	@RequestMapping(value="/getCategories", method=RequestMethod.POST,consumes="application/json",produces="application/json")
-	public @ResponseBody Map<Integer, String> getCategory(){
-		Map<Integer, String> categoryList = iAdminItemService.getCategories();
+	public @ResponseBody Map<String, String> getCategory(){
+		Map<String, String> categoryList = iAdminItemService.getCategories();
 		System.out.println(categoryList);
 		return categoryList;
 	}
