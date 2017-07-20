@@ -3,7 +3,7 @@
 <generatorConfiguration >
  <classPathEntry location="C:/Users/cast/.m2/repository/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar" />
   <context id="context1" >
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/e-commerce" userId="root" password="mysql" />
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/e-commerce" userId="root" password="password" />
     <javaModelGenerator targetPackage="com.mivim.data.model" targetProject="src\main\java">
      <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />

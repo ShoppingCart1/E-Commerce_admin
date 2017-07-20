@@ -124,7 +124,7 @@
 </div><br><br>
 <!-- carousel ends here -->
 <div data-ng-init="getData()" id="items" ng-if="item == null">
-<div class="itemView" ng-repeat="item in items">
+<div class="itemView" ng-repeat="item in items | filter: searchText">
           <!-- <form role="form" name="regform" ng-submit="getItemDataById()">
 		<input type="hidden" ng-model="id" name="id" ng-value="{{item.id}}"/> -->
   <img src="Image/{{item.id}}.jpg" alt="{{item.id}}.jpg" style="width:304px;height:250px;">
