@@ -28,7 +28,9 @@ app.controller("itemviewctrl", [ "$scope", '$routeParams', '$http',
 				}
 				$http(req).then(function(response) {
 					// $scope.item = response.data;
-
+					
+					
+//					$location.path("/updateItem");
 					$location.path("/updateItem").search({
 						item : response.data[0]
 					});
@@ -60,8 +62,8 @@ app.controller("itemviewctrl", [ "$scope", '$routeParams', '$http',
 
 				}
 				$http(req1).then(function(response) {
-					// $scope.item = response.data;
-					alert('sucessfully deleted')
+			
+					alert(response.data)
 					$location.path("/");
 					if (!$scope.$$phase) {
 						$scope.$apply();
@@ -74,6 +76,35 @@ app.controller("itemviewctrl", [ "$scope", '$routeParams', '$http',
 				});
 
 			};
+			var userData = null;
+
+			$scope.getUserData = function() {
+
+				var req = {
+					method : 'POST',
+					url : 'ecommerce_admin/getUserData',
+					data : {
+
+					},
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					params : null
+
+				}
+				$http(req).then(function(response) {
+					console.log(response.data);
+					$scope.userData = response.data;
+					
+						
+
+				}, function(response) {
+
+					console.log(response);
+
+				});
+
+			};	
 
 		} ]);
 

@@ -1,6 +1,7 @@
 package com.mivim.admin.dao;
 
+import com.mivim.admin.dto.AdminLoginDto;
+
 public interface IAdminDao {
-	public int loginDao();
-	public int test();
+	public AdminLoginDto authentication(AdminLoginDto dto);
 }

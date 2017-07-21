@@ -62,5 +62,6 @@ app.controller("HomeCtrl", [ "$scope", "$http", '$location', '$window',
 				});
 
 			};
+			
 
 		} ]);

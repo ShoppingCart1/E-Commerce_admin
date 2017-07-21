@@ -4,6 +4,5 @@ import com.mivim.admin.dto.AdminLoginDto;
 
 public interface IAdminLoginService {
 	
-	public boolean authentication(AdminLoginDto dto);
-
+	public AdminLoginDto authentication(AdminLoginDto dto);
 }

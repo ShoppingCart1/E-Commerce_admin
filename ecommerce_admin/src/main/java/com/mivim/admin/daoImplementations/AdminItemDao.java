@@ -21,10 +21,13 @@ import com.mivim.admin.dto.AdminItemsDto;
 import com.mivim.admin.dto.CategoryDto;
 import com.mivim.data.dao.CategoryMapper;
 import com.mivim.data.dao.ItemMapper;
+import com.mivim.data.dao.ItemcategoryMapper;
 import com.mivim.data.model.Category;
 import com.mivim.data.model.CategoryExample;
 import com.mivim.data.model.Item;
 import com.mivim.data.model.ItemExample;
+import com.mivim.data.model.Itemcategory;
+import com.mivim.data.model.ItemcategoryExample;
 
 @Repository
 @Resource(name="adminItemDao")
@@ -57,6 +60,17 @@ public class AdminItemDao implements IAdminItemDao{
 	@Qualifier("categoryExample")
 	CategoryExample categoryExample;
 	
+//	@Autowired
+//	private ItemcategoryMapper itemCategoryMapper;
+//	
+//	@Autowired(required = true)
+//	@Qualifier("itemCategory")
+//	Itemcategory itemCategory;
+//	
+//	@Autowired(required = true)
+//	@Qualifier("itemCategoryExample")
+//	ItemcategoryExample itemCategoryExample;
+	
 	@Override
 	public int addItem(AdminItemsDto dto) {
 		
@@ -69,7 +83,6 @@ public class AdminItemDao implements IAdminItemDao{
 		item.setUnitPrice(dto.getUnitPrice());
 		item.setUpdatedDate(getDate());
 		item.setId(getUserId());
-		
 		int status = itemMapper.insert(item);
 		System.out.println("successfully added..");
 		return status;
@@ -105,7 +118,7 @@ public class AdminItemDao implements IAdminItemDao{
 	public List<AdminItemsDto> getItems() {
 		
 		List<AdminItemsDto> newList = new ArrayList<AdminItemsDto>();
-
+		
 		itemExample.setDistinct(true);
 		itemExample.or().andStatusEqualTo(1);
 		List<Item> list = itemMapper.selectByExample(itemExample);
@@ -118,12 +131,43 @@ public class AdminItemDao implements IAdminItemDao{
 			adminItemsDto.setUnitPrice(item.getUnitPrice());
 			adminItemsDto.setItemInventry(item.getInventary());
 			adminItemsDto.setUpdatedDate(item.getUpdatedDate());
+//			List<AdminItemsDto> categoryByIdList = getCategoryById(item.getId());
+//			for(AdminItemsDto dto: categoryByIdList){
+//				adminItemsDto.setCategory(dto.getCategory());
+//				adminItemsDto.setSubCategory(dto.getSubCategory());
+//			}
+			
 			newList.add(adminItemsDto);
-
+			
+			
 		}
-
+		itemExample.clear();
 		return newList;
 	}
+//	
+//	@Override
+//	public List<AdminItemsDto> getCategoryById(String id){
+//		List<AdminItemsDto> newList = new ArrayList<AdminItemsDto>();
+//		
+//		itemCategoryExample.setDistinct(true);
+//		itemCategoryExample.or().andItemIdEqualTo(id);
+//		List<Itemcategory> list = itemCategoryMapper.selectByExample(itemCategoryExample);
+//
+//		for (Itemcategory item : list) {
+//			AdminItemsDto adminItemsDto = new AdminItemsDto();
+//			adminItemsDto.setId(item.getItemId());
+//			adminItemsDto.setCategory(item.getCategoryId());
+//			adminItemsDto.setSubCategory(item.getSubCategoryId());
+//			
+//			newList.add(adminItemsDto);
+//			
+//			
+//		}
+//		itemCategoryExample.clear();
+//		return newList;
+//				
+//	}
+	
 	
 	@Override
 	public List<CategoryDto> getCategories() {
@@ -152,7 +196,7 @@ public class AdminItemDao implements IAdminItemDao{
 		
 		List<CategoryDto> subCategoriesList = new ArrayList<CategoryDto>();
 
-		//categoryExample.setDistinct(true);
+		categoryExample.setDistinct(true);
 		categoryExample.or().andParentIdEqualTo(dto.getId());
 		List<Category> list = categoryMapper.selectByExample(categoryExample);
 

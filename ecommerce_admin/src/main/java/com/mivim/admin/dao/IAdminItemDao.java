@@ -14,6 +14,6 @@ public interface IAdminItemDao {
 	public List<AdminItemsDto> getItems();
 	public List<CategoryDto> getCategories();
 	public List<CategoryDto> getSubCategories(CategoryDto dto);
-
+//	public List<AdminItemsDto> getCategoryById(String id);
 
 }

@@ -19,71 +19,66 @@ import com.mivim.admin.service.IAdminItemService;
 
 @Controller
 public class AdminItemController {
-	
-	
+
 	@Autowired(required = true)
 	@Qualifier("adminItemService")
 	IAdminItemService iAdminItemService;
 
-	
-	@RequestMapping(value="/addItem", method=RequestMethod.POST,consumes="application/json",produces="application/json")
-	public @ResponseBody List<String> addItem(AdminItemsDto dto){
-//		String result = null;
-		System.out.println(dto.getCategory()+"  "+dto.getSubCategory());
-	int addItemCheck = iAdminItemService.addItem(dto);
-	List<String> list=new ArrayList<String>();
-		
-		if(addItemCheck!=0)
+	@RequestMapping(value = "/addItem", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public @ResponseBody List<String> addItem(AdminItemsDto dto) {
+
+		int addItemCheck = iAdminItemService.addItem(dto);
+		List<String> list = new ArrayList<String>();
+
+		if (addItemCheck != 0)
 			list.add("Added successfully");
 		else
 			list.add("Adding failure");
 		System.out.println(list);
-			return list;
+		return list;
 	}
-	
-	@RequestMapping(value="/updateItem", method=RequestMethod.GET)
-	public @ResponseBody List<String> updateItem(AdminItemsDto dto){
+
+	@RequestMapping(value = "/updateItem", method = RequestMethod.GET)
+	public @ResponseBody List<String> updateItem(AdminItemsDto dto) {
 
 		String result = null;
-		List<String> list=new ArrayList<String>();
+		List<String> list = new ArrayList<String>();
 
-		int updateItemCheck = iAdminItemService.updateItem(dto); 
-		if(updateItemCheck==1)
+		int updateItemCheck = iAdminItemService.updateItem(dto);
+
+		if (updateItemCheck == 1)
 			list.add("Updated successfully");
 		else
 			list.add("Updation failure");
 		return list;
+
 	}
-	
-	@RequestMapping(value="/removeItem", method=RequestMethod.GET)
-	public @ResponseBody List removeItem(AdminItemsDto dto){
-		List<String> list=new ArrayList<String>();
-		
-		int removeStatus = iAdminItemService.removeItem(dto); 
-		
-		if(removeStatus==1)
-			list.add("Updated successfully");
-		
+
+	@RequestMapping(value = "/removeItem", method = RequestMethod.GET)
+	public @ResponseBody List removeItem(AdminItemsDto dto) {
+		List<String> list = new ArrayList<String>();
+
+		int removeStatus = iAdminItemService.removeItem(dto);
+
+		if (removeStatus == 1)
+			list.add("Removed successfully");
+
 		else
-			list.add("Updation failure");
+			list.add("Unable to remove");
 		
 		return list;
 	}
 
-	@RequestMapping(value="/getCategories", method=RequestMethod.POST,consumes="application/json",produces="application/json")
-	public @ResponseBody Map<String, String> getCategory(){
+	@RequestMapping(value = "/getCategories", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public @ResponseBody Map<String, String> getCategory() {
 		Map<String, String> categoryList = iAdminItemService.getCategories();
-		System.out.println(categoryList);
 		return categoryList;
 	}
-	
-	
-	@RequestMapping(value="/getSubCategories", method=RequestMethod.POST,consumes="application/json",produces="application/json")
-	public @ResponseBody Map<String, String> getSubCategories(CategoryDto dto){
-		System.out.println("Entered into url");
-		Map<String, String> subCategories = iAdminItemService.getSubCategoriesList(dto); 
-		System.out.println(subCategories);
+
+	@RequestMapping(value = "/getSubCategories", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	public @ResponseBody Map<String, String> getSubCategories(CategoryDto dto) {
+		Map<String, String> subCategories = iAdminItemService.getSubCategoriesList(dto);
 		return subCategories;
 	}
-	
+
 }

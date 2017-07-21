@@ -68,13 +68,13 @@ var app= angular.module('addItemApp',[]);
 		    			  }
 				  $http(req).then(function(response) {
 			            console.log(response.data);
-			            $window.alert("added successfully");
+			            $window.alert(response.data);
 			            $location.path("/");
 			            $scope.message = response.data;
 			        }, function(response) {
 			            //fail case
 			            console.log(response);
-			            $window.alert('failed');
+			            $window.alert('updation failed..not urs. its ours.');
 			            $scope.message = response;
 			        });
 			 

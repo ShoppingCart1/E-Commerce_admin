@@ -2,8 +2,11 @@ package com.mivim.admin.serviceimplementations;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.mivim.admin.dao.IAdminDao;
 import com.mivim.admin.dto.AdminLoginDto;
 import com.mivim.admin.service.IAdminLoginService;
 
@@ -11,18 +14,16 @@ import com.mivim.admin.service.IAdminLoginService;
 @Resource(name="adminLoginService")
 public class AdminLoginService implements IAdminLoginService {
 
-//	@Autowired
-//	UserDao userDao;
+	@Autowired
+	@Qualifier("adminDao")
+	IAdminDao iadminDao;
 	
-	/*
-	 * @author SReddy
-	 * @see com.mivim.service.UserService#authentication(com.mivim.dto.UserDto)
-	 * @return boolean
-	 * @param UserDto object
-	 */
-	public boolean authentication(AdminLoginDto dto) {
 	
-		return true;
+	public AdminLoginDto authentication(AdminLoginDto dto) {
+
+		AdminLoginDto adminLoginDto = iadminDao.authentication(dto);
+
+		return adminLoginDto;
 	}
 
 

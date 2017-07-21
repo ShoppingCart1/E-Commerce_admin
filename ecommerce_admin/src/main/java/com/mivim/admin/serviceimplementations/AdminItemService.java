@@ -65,42 +65,7 @@ public class AdminItemService implements IAdminItemService{
 			mapSubCategories.put(categoryDto.getId(), categoryDto.getCategoryName());
 		}
 		return mapSubCategories;
-//		HashMap<String, Map> subCategories = new HashMap<>();
-//		Map<Integer, String> subCategoryMen = new HashMap<>();
-//		subCategoryMen.put(101, "Watches");
-//		subCategoryMen.put(102, "EyeWears");
-//		subCategoryMen.put(103, "Footwears");
-//		subCategoryMen.put(104, "MenShoes");
-//		subCategoryMen.put(105, "Jackets");
-//		
-//		Map<Integer, String> subCategoryElectronics = new HashMap<>();
-//		subCategoryElectronics.put(201, "Watches");
-//		subCategoryElectronics.put(202, "Mobiles");
-//		subCategoryElectronics.put(203, "Laptops");
-//		subCategoryElectronics.put(204, "Tablets");
-//		subCategoryElectronics.put(205, "Pendrives");
-//		
-//		Map<Integer, String> subCategoryWomen = new HashMap<>();
-//		subCategoryWomen.put(301, "Watches");
-//		subCategoryWomen.put(302, "EyeWears");
-//		subCategoryWomen.put(303, "Footwears");
-//		subCategoryWomen.put(304, "WoenShoes");
-//		subCategoryWomen.put(305, "Lipsticks");
-//		
-//		Map<Integer, String> subCategoryClothes = new HashMap<>();
-//		subCategoryClothes.put(401, "Jackets");
-//		subCategoryClothes.put(402, "Formals");
-//		subCategoryClothes.put(403, "Casuals");
-//		subCategoryClothes.put(404, "Business formals");
-//		
-//		subCategories.put("100", subCategoryMen);
-//		subCategories.put("200", subCategoryElectronics);
-//		subCategories.put("300", subCategoryWomen);
-//		subCategories.put("400", subCategoryClothes);
-//
-//		Map<String, String> finalMap = subCategories.get(dto.getId());
-//		
-//		return finalMap;
+
 	}
 
 	@Override
