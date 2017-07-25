@@ -31,7 +31,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage" value="com.mivim.data.model" />
-		<property name="mapperLocations" value="classpath*:com/mivim/data/xml/*.xml" />
+		<property name="mapperLocations" value="classpath*:com/mivim/**/xml/*.xml" />
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
@@ -39,7 +39,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	</bean>
 
 	<bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.mivim.data.dao" />
+		<property name="basePackage" value="com.mivim.data.*" />
 	</bean>
 
 	<bean id="item" class="com.mivim.data.model.Item"></bean>
@@ -51,8 +51,11 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	<bean id="user" class="com.mivim.data.model.User"></bean>
 	<bean id="userExample" class="com.mivim.data.model.UserExample"></bean>
 	
-<!-- 	<bean id="itemCategory" class="com.mivim.data.model.Itemcategory"></bean> -->
-<!-- 	<bean id="itemCategoryExample" class="com.mivim.data.model.ItemcategoryExample"></bean> -->
+	<bean id="itemCategory" class="com.mivim.data.model.Itemcategory"></bean>
+	<bean id="itemCategoryExample" class="com.mivim.data.model.ItemcategoryExample"></bean>
+	
+	<bean id="utils" class="com.mivim.data.custom.model.Utils"/>
+	
 
 	<context:component-scan base-package="com.mivim.*" />
 

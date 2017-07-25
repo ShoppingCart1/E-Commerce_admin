@@ -44,14 +44,6 @@ public class AdminItemService implements IAdminItemService{
 		
 		return mapCategories;
 		
-		
-//		Map<Integer, String> categories = new HashMap<>();
-//		categories.put(100, "Men");
-//		categories.put(200, "Electronics");
-//		categories.put(300, "Women");
-//		categories.put(400, "Clothes");
-//		
-//		return categories;
 	}
 	
 	@Override

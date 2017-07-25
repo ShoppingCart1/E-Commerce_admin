@@ -8,8 +8,12 @@ var app= angular.module('updateItemApp',[]);
 		}
 	   
 	   $scope.item=$routeParams.item;
+	   $scope.category = $scope.item.categoryId;
+	   $scope.subCategory = $scope.item.subCategoryId;
+	   
 	   var categories= null;
 	   var subCategories=null;
+	   
 	   
 	   $scope.getCategory = function() {
 		  
@@ -25,7 +29,9 @@ var app= angular.module('updateItemApp',[]);
     			   
     			}
 	        $http(req).then(function(response) {
+	        	
 	        	$scope.categories = response.data;
+	        	$scope.getSubCategory($scope.item.categoryId);
 	           
 	        }, function(response) {
 	            
@@ -34,9 +40,12 @@ var app= angular.module('updateItemApp',[]);
 	        });
 	 
 	    };
-	    $scope.getSubCategory = function() {
+	    $scope.getSubCategory = function(categoryId) {
 	    	
-	    	var dto={id:$scope.category};
+	    	if(!categoryId){
+	    		return;
+	    	}
+	    	var dto={id:categoryId};
 			   var req = {
 	    			   method: 'POST',
 	    			   url: 'ecommerce_admin/getSubCategories',
@@ -60,7 +69,7 @@ var app= angular.module('updateItemApp',[]);
 		    };
 		    $scope.doSubmit= function() {
 				  
-				  var dto = {id: $scope.id, itemName: $scope.itemName, unitPrice:$scope.unitPrice, itemInventry:$scope.itemInventry, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
+				  var dto = {id: $scope.id, itemName: $scope.itemName, unitPrice:$scope.unitPrice, inventary:$scope.inventary, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
 				  var req = {
 		    			   method: 'GET',
 		    			   url: 'ecommerce_admin/updateItem',
@@ -79,11 +88,13 @@ var app= angular.module('updateItemApp',[]);
 			        }, function(response) {
 			            //fail case
 			            console.log(response);
-			            alert("Failed..!!!Its not urs. Its ours");
+//			            alert("Failed..!!!Its not urs. Its ours");
 			           
 			            $scope.message = response;
 			        });
 			 
 			    };
+			    
+			    $scope.getCategory();
 	  	  
    }]);

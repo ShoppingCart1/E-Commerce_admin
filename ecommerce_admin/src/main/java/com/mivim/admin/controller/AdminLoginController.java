@@ -28,23 +28,25 @@ public class AdminLoginController {
 	
 	@RequestMapping(value = "/authentication", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
 	public @ResponseBody Map<String, Object> getAuthentication(HttpServletRequest request, AdminLoginDto dto) {
-
 		Map<String, Object> map = new HashMap<String, Object>();
 		AdminLoginDto adminLoginDto = adminLoginService.authentication(dto);
-
-		HttpSession session = request.getSession();
-		session.setAttribute("adminLoginDto", adminLoginDto);
-		AdminLoginDto admin = (AdminLoginDto) session.getAttribute("adminLoginDto");
-		if (admin != null) {
+		AdminLoginDto admin = null;
+		
+		if (adminLoginDto.getEmail() != null) {
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("adminLoginDto", adminLoginDto);
+			admin = (AdminLoginDto) session.getAttribute("adminLoginDto");
+			
 			map.put("status", "200");
 			map.put("message", admin);
+			
 		} else {
 			map.put("status", "400");
 			map.put("message", admin);
 		}
 
 		return map;
-
 	}
 	
 	@RequestMapping(value = "/getUserData", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")

@@ -3,10 +3,10 @@ var app = angular.module('mivimItemView', []);
 app.controller("itemviewctrl", [ "$scope", '$routeParams', '$http',
 		'$location', function($scope, $routeParams, $http, $location) {
 
-			if (!$routeParams.item || $routeParams.item === "[object Object]" ) {
-				$location.path("/home");
-				return;
-			}
+//			if (!$routeParams.item || $routeParams.item === "[object Object]" ) {
+//				$location.path("/home");
+//				return;
+//			}
 			$scope.item = $routeParams.item;
 
 			$scope.getItemDataById = function(itemId) {
@@ -32,7 +32,7 @@ app.controller("itemviewctrl", [ "$scope", '$routeParams', '$http',
 					
 //					$location.path("/updateItem");
 					$location.path("/updateItem").search({
-						item : response.data[0]
+						item : response.data
 					});
 					if (!$scope.$$phase) {
 						$scope.$apply();

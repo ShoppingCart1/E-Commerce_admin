@@ -20,9 +20,7 @@ import com.mivim.data.model.UserExample;
 @Repository
 @Resource(name="adminDao")
 public class AdminDao implements IAdminDao{
-//	private static Date date=Utils.getDate();
-//	private static String userId=Utils.getUUId();
-//	private static int status=Utils.getStatusCode();
+
 	
 	@Autowired
 	private UserMapper userMapper;
@@ -56,8 +54,5 @@ public class AdminDao implements IAdminDao{
 		return adminLoginDto;
 
 	}
-	
-	
-
 	
 }

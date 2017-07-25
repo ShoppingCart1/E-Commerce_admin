@@ -50,7 +50,7 @@ app.controller("HomeCtrl", [ "$scope", "$http", '$location', '$window',
 				$http(req).then(function(response) {
 					$scope.item = response.data;
 
-					$location.path("/itemview").search({item:  response.data[0]});
+					$location.path("/itemview").search({item:  response.data});
 					if (!$scope.$$phase) {
 						$scope.$apply();
 					}

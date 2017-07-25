@@ -13,38 +13,37 @@ import com.mivim.admin.dao.IAdminItemDao;
 import com.mivim.admin.dto.AdminItemsDto;
 import com.mivim.admin.dto.AdminUtilDto;
 import com.mivim.admin.service.IAdminUtilService;
+import com.mivim.data.custom.model.Utils;
+import com.mivim.data.model.Item;
 
-	@Service
-	@Resource(name="adminUtilService")
-	public class AdminUtilService implements IAdminUtilService {
+@Service
+@Resource(name = "adminUtilService")
+public class AdminUtilService implements IAdminUtilService {
 
-		@Autowired(required = true)
-		@Qualifier("adminItemDao")
-		IAdminItemDao adminItemDao;	
-		
-		@Override
-		public List<AdminItemsDto> getItemDetails() {
-			return getData();
-		}
+	@Autowired(required = true)
+	@Qualifier("adminItemDao")
+	IAdminItemDao adminItemDao;
 
-		@Override
-		public List<AdminItemsDto> getItemView(AdminUtilDto dto) {
-			List<AdminItemsDto> itemsData=getData();
-			List<AdminItemsDto> item=new ArrayList<AdminItemsDto>();
-			for(AdminItemsDto itemDto:itemsData)
-			{
-				if(itemDto.getId().equals(dto.getId()))
-				{
-					item.add(itemDto);
-				}
-			}
-			return item;
-		}
-		
-		
-		public List<AdminItemsDto> getData()
+	@Override
+	public List<AdminItemsDto> getItemDetails() {
+		List<AdminItemsDto> list = new ArrayList<AdminItemsDto>();
+		List<Item> items = adminItemDao.getAllItems();
+		for(Item item:items)
 		{
-			List<AdminItemsDto> itemsList = adminItemDao.getItems();
-			return itemsList;
+			AdminItemsDto adminItemsDto=new AdminItemsDto();
+			adminItemsDto.setId(item.getId());
+			adminItemsDto.setItemName(item.getItemName());
+			adminItemsDto.setItemDescription(item.getItemDescription());
+			adminItemsDto.setUnitPrice(item.getUnitPrice());
+			list.add(adminItemsDto);
 		}
+		return list;
+	}
+
+	@Override
+	public Utils getItemView(AdminUtilDto dto) {
+
+		return adminItemDao.getItems(dto.getId());
+	}
+
 }

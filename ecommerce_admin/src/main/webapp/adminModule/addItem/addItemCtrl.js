@@ -54,7 +54,7 @@ var app= angular.module('addItemApp',[]);
 		    };
 		    $scope.doSubmit= function() {
 				  
-				  var dto = { itemName: $scope.itemName, unitPrice:$scope.unitPrice, itemInventry:$scope.itemInventry, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
+				  var dto = { itemName: $scope.itemName, unitPrice:$scope.unitPrice, inventary:$scope.inventary, itemDescription:$scope.itemDescription, category:$scope.category, subCategory:$scope.subCategory}; 
 				  
 				  var req = {
 		    			   method: 'POST',
@@ -74,7 +74,6 @@ var app= angular.module('addItemApp',[]);
 			        }, function(response) {
 			            //fail case
 			            console.log(response);
-			            $window.alert('updation failed..not urs. its ours.');
 			            $scope.message = response;
 			        });
 			 

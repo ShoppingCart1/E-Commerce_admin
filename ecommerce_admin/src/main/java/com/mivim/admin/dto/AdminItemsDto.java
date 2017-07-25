@@ -7,13 +7,19 @@ public class AdminItemsDto {
 	private String id;
 	private String itemName;
 	private String unitPrice;
-	private String itemInventry;
+	private String inventary;
 	private String itemDescription;
 	private String category;
 	private String subCategory;
 	private int status;
 	private Date updatedDate;
 	
+	public String getInventary() {
+		return inventary;
+	}
+	public void setInventary(String inventary) {
+		this.inventary = inventary;
+	}
 	public Date getUpdatedDate() {
 		return updatedDate;
 	}
@@ -47,12 +53,7 @@ public class AdminItemsDto {
 		this.unitPrice = unitPrice;
 	}
 	
-	public String getItemInventry() {
-		return itemInventry;
-	}
-	public void setItemInventry(String itemInventry) {
-		this.itemInventry = itemInventry;
-	}
+	
 	public String getItemDescription() {
 		return itemDescription;
 	}

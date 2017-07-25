@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mivim.admin.dto.AdminItemsDto;
 import com.mivim.admin.dto.AdminUtilDto;
 import com.mivim.admin.service.IAdminUtilService;
+import com.mivim.data.custom.model.Utils;
 
 
 @Controller
@@ -32,10 +33,10 @@ public class AdminUtilController {
 	}
 	
 	@RequestMapping(value="/getItemDataById",method=RequestMethod.POST,consumes="application/json",produces="application/json")
-	public @ResponseBody List<AdminItemsDto> getItemData(AdminUtilDto dto)
+	public @ResponseBody Utils getItemData(AdminUtilDto dto)
 	{
 		
-		List<AdminItemsDto> item=adminUtilService.getItemView(dto);
+		Utils item=adminUtilService.getItemView(dto);
 		return item;
 		
 	}
